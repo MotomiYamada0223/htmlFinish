@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迷宮脱出ホラー</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Three.js Canvas will be injected here -->
+    </div>
+
+    <!-- UI Overlay -->
+    <div id="ui-layer">
+        <!-- Reticle -->
+        <div id="crosshair"></div>
+
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <h1>迷宮脱出ホラー</h1>
+            <p>画面をクリックして開始</p>
+            <div class="instructions">
+                <p>W, A, S, D: 移動</p>
+                <p>Shift: 走る（足音に注意）</p>
+                <p>Q: 振り向く</p>
+                <p>M: マップ表示</p>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over-screen" class="screen">
+            <h1>GAME OVER</h1>
+            <p>捕まってしまった...</p>
+            <button id="retry-btn">リトライ</button>
+        </div>
+
+        <!-- Game Clear Screen -->
+        <div id="game-clear-screen" class="screen">
+            <h1>GAME CLEAR!</h1>
+            <p>無事に脱出できた！</p>
+            <button id="restart-btn">もう一度プレイ</button>
+        </div>
+
+        <!-- Map UI -->
+        <div id="map-ui" class="hidden">
+            <canvas id="map-canvas" width="600" height="600"></canvas>
+            <div class="map-legend">
+                <p>■: 壁 / □: 通路</p>
+                <p><span style="color:red;">●</span>: プレイヤー</p>
+                <p><span style="color:yellow;">★</span>: 鍵</p>
+                <p><span style="color:green;">█</span>: ゴール</p>
+            </div>
+        </div>
+
+        <!-- Goal Door UI (Shows required key when close) -->
+        <div id="door-ui" class="hidden">
+            <p id="door-message">扉には鍵がかかっている。</p>
+            <div id="required-key-icon"></div>
+        </div>
+
+        <!-- Inventory UI -->
+        <div id="inventory-ui">
+            所持キー: <span id="current-key">なし</span>
+        </div>
+    </div>
+
+    <!-- Import Three.js as a Global Variable from CDN -->
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+    <!-- Combined Game Script -->
+    <script src="bundle.js"></script>
+</body>
+</html>
